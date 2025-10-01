@@ -1,0 +1,10 @@
+{% extends "revista/base.html" %}
+
+{% block title %}Detalle del Estudiante{% endblock %}
+
+{% block content %}
+<h1>{{ object.nombre }}</h1>
+<p>Dirección: {{ object.direccion }}</p>
+<p>Carné: {{ object.carne }}</p>
+<a href="{% url 'estudiantes-list' %}">Volver al listado</a>
+{% endblock %}

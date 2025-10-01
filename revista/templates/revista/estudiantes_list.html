@@ -1,0 +1,33 @@
+{% extends "revista/base.html" %}
+
+{% block content %}
+<h2>Lista de Estudiantes</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Carné</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for estudiante in object_list %}
+        <tr>
+            <td>{{ estudiante.nombre }}</td>
+            <td>{{ estudiante.direccion }}</td>
+            <td>{{ estudiante.carne }}</td>
+            <td>
+                <a href="{% url 'estudiante-detail' estudiante.pk %}" class="btn btn-sm btn-info">Ver</a>
+                <a href="{% url 'estudiante-edit' estudiante.pk %}" class="btn btn-sm btn-warning">Editar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="text-center">No hay estudiantes</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

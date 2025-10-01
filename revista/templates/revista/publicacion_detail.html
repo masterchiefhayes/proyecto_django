@@ -1,0 +1,30 @@
+{% extends "revista/base.html" %}
+
+{% block content %}
+<h1>{{ object.titulo }}</h1>
+<p>{{ object.contenido }}</p>
+<p>Publicado por: {{ object.autor.nombre }}</p>
+<p>Autorizado por: {{ object.autorizado_por.nombre }}</p>
+
+<hr>
+<h3>Comentarios:</h3>
+<ul>
+    {% for comentario in comentarios %}
+        <li>
+            <strong>{{ comentario.estudiante.nombre }}:</strong>
+            {{ comentario.comentario }}
+            <em>({{ comentario.fecha }})</em>
+        </li>
+    {% empty %}
+        <li>No hay comentarios aún.</li>
+    {% endfor %}
+</ul>
+
+<hr>
+<h3>Agregar comentario</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Comentar</button>
+</form>
+{% endblock %}
