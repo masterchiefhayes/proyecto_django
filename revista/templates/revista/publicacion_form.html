@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Publicación</title>
+</head>
+<body>
+    <h1>Editar {{ object.titulo }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="{% url 'publicaciones-list' %}">Cancelar</a>
+</body>
+</html>

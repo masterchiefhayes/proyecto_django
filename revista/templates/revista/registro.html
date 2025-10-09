@@ -1,0 +1,21 @@
+{% extends "revista/base.html" %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 500px;">
+
+    <h2 class="mb-3">Registro de Estudiante</h2>
+
+    {% if mensaje_registro %}
+        <div class="alert alert-success">
+            {{ mensaje_registro }}
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Registrarse</button>
+    </form>
+
+</div>
+{% endblock %}
